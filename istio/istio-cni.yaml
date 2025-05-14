@@ -1,0 +1,9 @@
+apiVersion: sailoperator.io/v1alpha1
+kind: IstioCNI
+# Integrates Istio with the Kubernetes network plugin (CNI)
+    Allows transparent traffic redirection
+metadata:
+  Name: default
+spec:
+  namespace: istio-cni
+  version: v1.24.1

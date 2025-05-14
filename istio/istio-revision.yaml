@@ -1,0 +1,32 @@
+apiVersion: sailoperator.io/v1alpha1
+kind: IstioRevision
+#     IstioRevision represents a single revision of an Istio Service Mesh deployment. It is created while creating the gateway resource
+metadata:
+# name: {istio}-{env}
+  name: istio-test
+  ownerReferences:
+    - apiVersion: sailoperator.io/v1alpha1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Istio
+      name: default
+spec:
+  namespace: istio-system
+  values:
+    defaultRevision: ''
+    global:
+      configValidation: true
+      istioNamespace: istio-system
+      platform: openshift
+      proxy:
+        image: 'registry.redhat.io/openshift-service-mesh-tech-preview/istio-proxyv2-rhel9@sha256:c21481d6dae58b82dac93b1b47b9d9f53a30617fa9d930a0b5d075620cffa74b'
+      proxy_init:
+        image: 'registry.redhat.io/openshift-service-mesh-tech-preview/istio-proxyv2-rhel9@sha256:c21481d6dae58b82dac93b1b47b9d9f53a30617fa9d930a0b5d075620cffa74b'
+    meshConfig:
+      discoverySelectors:
+        - matchLabels:
+            istio-discovery: enabled
+    pilot:
+      image: 'registry.redhat.io/openshift-service-mesh-tech-preview/istio-pilot-rhel9@sha256:ea9372fabe06cd8e65ea7b4567ce3c8fbddd9d673dc34a12743fd95c548059d1'
+    revision: ''
+  version: v1.24.1

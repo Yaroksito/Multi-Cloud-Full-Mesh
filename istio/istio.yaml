@@ -1,0 +1,23 @@
+apiVersion: sailoperator.io/v1alpha1
+kind: Istio
+#     Istio represents an Istio Service Mesh deployment consisting of one or more
+        control plane instances (represented by one or more IstioRevision objects).
+        To deploy an Istio Service Mesh, a user creates an Istio object with the
+        desired Istio version and configuration. The operator then creates
+        an IstioRevision object, which in turn creates the underlying Deployment
+        objects for istiod and other control plane components, similar to how a
+        Deployment object in Kubernetes creates ReplicaSets that create the Pods.
+metadata:
+  Annotations:
+  name: {istio}-{env}
+spec:
+  namespace: istio-system
+  updateStrategy:
+    inactiveRevisionDeletionGracePeriodSeconds: 30
+    type: InPlace
+  values:
+    meshConfig:
+      discoverySelectors:
+        - matchLabels:
+            istio-discovery: enabled
+  version: v1.24.1

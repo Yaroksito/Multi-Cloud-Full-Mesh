@@ -1,0 +1,11 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: GatewayClass
+#   GatewayClass describes a class of Gateways available to the user for
+      creating Gateway resources. GatewayClass is a cluster level resource. Do not create this resource!
+      It is create while creating the gateway object.
+metadata:
+  name: istio
+spec:
+  controllerName: istio.io/gateway-controller
+  description: The default Istio GatewayClass
+

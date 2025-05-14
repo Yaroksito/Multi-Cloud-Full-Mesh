@@ -1,0 +1,8 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: GatewayClass
+# Do not create this resource! It is create while creating the gateway resource
+metadata:
+  name: istio-remote
+spec:
+  controllerName: istio.io/unmanaged-gateway
+  description: Remote to this cluster. Does not deploy or affect configuration.

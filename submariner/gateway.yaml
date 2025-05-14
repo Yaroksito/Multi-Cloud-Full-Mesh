@@ -1,0 +1,11 @@
+apiVersion: submariner.io/v1
+kind: Gateway
+  annotations:
+    submariner.io/globalIp: 242.0.255.253
+  name: {node-name}.{domain}
+  namespace: submariner-operator
+metadata:
+  name: example
+  namespace: application-submariner
+spec: {}
+

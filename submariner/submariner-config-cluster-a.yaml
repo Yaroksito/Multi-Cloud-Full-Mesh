@@ -1,0 +1,21 @@
+apiVersion: submarineraddon.open-cluster-management.io/v1alpha1
+kind: SubmarinerConfig
+metadata:
+  name: submariner
+  namespace: {cluster-a}
+spec:
+  Debug: false
+  IPSecDebug: false
+  IPSecIKEPort: 500
+  IPSecNATTPort: 4500
+  NATTDiscoveryPort: 4900
+  NATTEnable: true
+  airGappedDeployment: true
+  cableDriver: libreswan
+  forceUDPEncaps: false
+  gatewayConfig:
+    gateways: 1
+  globalCIDR: ""
+  haltOnCertificateError: true
+  insecureBrokerConnection: false
+  loadBalancerEnable: false
