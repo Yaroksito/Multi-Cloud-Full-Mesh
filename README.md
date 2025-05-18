@@ -9,3 +9,8 @@ Instructions
 This repo containes the manifests that are required to deploy a Multi-Cloud-Full-Mesh solution as it is described on the Red Hat blog: <url>
 
 Please refer to the instructions in each deployment.
+
+Architecture
+------------
+
+![Description](Multi-Cluster-Architecture.png)
