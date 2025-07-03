@@ -6,11 +6,19 @@ In today’s dynamic IT landscape, the ability to ensure application resiliency 
 
 Instructions
 ------------
-This repo containes the manifests that are required to deploy a Multi-Cloud-Full-Mesh solution as it is described on the Red Hat blog: <url>
+This repo containes the manifests that are required to deploy a Multi-Cloud Full-Mesh solution as it is described on the Red Hat blog: <https://docs.google.com/document/d/1aYqIraG3TF0BM7wUg5IEQBIsDWciYLd0gDy5tQGXT2g/edit?tab=t.0#heading=h.bges0t6y0oi1>
 
 Please refer to the instructions in each deployment.
 
 Architecture
 ------------
 
-![Description](Multi-Cluster-Architecture.png)
+![Description](Multi-Cluster-Full-Mesh-Architecture.jpg)
+
+Docs
+------------
+1. Service-Mesh - https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html-single/service_mesh/index#ossm-custom-resources-v1x
+2. Gateway API - https://gateway-api.sigs.k8s.io/concepts/glossary/#gateway-controller
+3. Submariner Community - https://submariner.io/getting-started/architecture/service-discovery
+4. Submariner Official - https://docs.redhat.com/en/documentation/red_hat_advanced_cluster_management_for_kubernetes/2.13/html-single/networking/index#subm-vpc-config
+5. Multi-Cluster - https://github.com/kubernetes/enhancements/tree/master/keps/sig-multicluster/1645-multi-cluster-services-api

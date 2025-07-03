@@ -1,16 +1,20 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: example-service-cluster1
   labels:
-    app.kubernetes.io/name: example-service
+    app: webserver
+  name: webserver
 spec:
-  type: ClusterIP
-  selector:
-    app.kubernetes.io/name: example-service
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
   ports:
-    - name: svc-port
-      port: 80
-      targetPort: app-port
-      protocol: TCP
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: webserver
+  sessionAffinity: None
+  type: ClusterIP
 

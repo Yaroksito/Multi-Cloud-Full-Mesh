@@ -1,0 +1,26 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: webserver-gateway
+  namespace: application-submariner
+  annotations:
+    networking.istio.io/service-type: NodePort
+spec:
+  gatewayClassName: istio
+  listeners:
+  - name: http
+    port: 8080
+    protocol: HTTP
+    allowedRoutes:
+      kinds:
+      - kind: HTTPRoute
+      namespaces:
+        from: Selector
+        selector:
+          matchLabels:
+            # This label is added automatically as of K8s 1.22
+            # to all namespaces
+            kubernetes.io/metadata.name: application-submariner
+            #namespaces:
+            #from: All
+

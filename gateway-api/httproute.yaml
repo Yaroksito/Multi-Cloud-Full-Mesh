@@ -1,23 +1,21 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  annotations:
+  name: webserver
+  namespace: application-submariner
 spec:
-  hostnames:
-  - my-app.my-namespace.svc.clusterset.local
   parentRefs:
-  - group: gateway.networking.k8s.io
-      kind: Gateway
-      name: {app-name}-{gateway} #subscribes to the created Gateway
-      namespace: application-submariner
+  - name: webserver-gateway
+    kind: Gateway
+    namespace: application-submariner
+  hostnames: ["10.70.71.41","webserver-gateway-application-submariner.apps.ocplandev.mac.org.il"]
   rules:
+          #  - matches:
+          #    - path:
+          #type: PathPrefix
+          #value: /
   - backendRefs:
-      - group: ''
-        kind: Service
-        name: example-service-external
-        port: 8080
-        weight: 1
-    matches:
-    - path:
-            type: PathPrefix
-            value: /
+    - name: webservice-external
+      kind: Service
+      port: 8080
+

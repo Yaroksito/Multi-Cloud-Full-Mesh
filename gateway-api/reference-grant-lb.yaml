@@ -1,0 +1,19 @@
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: ReferenceGrant
+metadata:
+  name: allow-gateway-references
+  namespace: {application-namespace} # This ReferenceGrant lives in the namespace of the objects it grants access to (Secret and HTTPRoute)
+spec:
+  from:
+  - group: ""
+    kind: Secret
+    name: {secret-name} # The exact name of your TLS secret
+  - group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    name: {httproute-name}         # The specific HTTPRoute that needs to attach to the Gateway
+  to:
+  - group: gateway.networking.k8s.io
+    kind: Gateway
+    name: {gateway-name}         # The specific Gateway resource that needs access
+    namespace: {gateway-namespace} # The namespace of the Gateway
+

@@ -1,0 +1,14 @@
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata:
+  name: {app-name} # A more descriptive name to avoid conflict with Gateway name
+  namespace: {app-namespace}
+spec:
+  hosts:
+  - {svc-name.namespace.svc.clusterset.local} # The multi-cluster service DNS name
+  location: MESH_INTERNAL # Crucial for multi-cluster discovery and mTLS expectation
+  ports:
+  - name: http
+    number: {port-number} # The port your application service listens on
+    protocol: HTTP
+  resolution: DNS # Indicates resolution via DNS (e.g., Submariner Lighthouse DNS)

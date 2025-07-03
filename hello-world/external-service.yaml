@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: example-service-external
+  namespace: hello-world
+spec:
+  externalName: example-service-cluster1.hello-world.svc.clusterset.local
+  sessionAffinity: None
+  type: ExternalName
+status:
+  loadBalancer: {}
+

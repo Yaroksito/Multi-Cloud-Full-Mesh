@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-service
+  labels:
+    app.kubernetes.io/name: example-service
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: example-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: example-service
+    spec:
+      terminationGracePeriodSeconds: 0
+      containers:
+        - name: example-service
+          image: mhcs.jfrog.io/docker/hashicorp/http-echo:v1
+          imagePullPolicy: IfNotPresent
+          args:
+            - -listen=:3000
+            - -text=example-service
+          ports:
+            - name: app-port
+              containerPort: 3000
+          resources:
+            requests:
+              cpu: 0.125
+              memory: 50Mi
